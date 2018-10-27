@@ -1,0 +1,205 @@
+swagger: '2.0'
+
+info:
+  title: Futebas API
+  description: Futebas API oferece acesso a todas operações do software
+  version: 1.0.0
+  contact:
+    email: rodrigopizzi@gmail.com
+    name: Rodrigo Pizzi Argentato
+basePath: /v1
+tags: 
+  - name: grupo
+    description: Tudo sobre grupo de jogadores
+schemes: 
+  - http
+
+
+paths:
+
+  /grupo:
+    post:
+      tags: 
+        - grupo
+      summary: Cria um grupo de jogadores
+      description: Um usuário podera ter quantos grupos desejar.
+      operationId: addGrupo
+      parameters: 
+        - in: body
+          name: body
+          description: O grupo deverá ter ao menos um nome
+          required: true
+          schema:
+            $ref: '#/definitions/Grupo'
+      responses:
+        200:
+          description: OK
+      security:
+        - api_key: []
+    put:
+      tags: 
+        - grupo
+      summary: Edita o nome do grupo
+      description: O nome do grupo deverá ter ao menos 3 caracteres
+      operationId: updateGrupo
+      parameters: 
+        - in: body
+          name: body
+          description: O grupo deverá ser identificado por 'id'
+          required: true
+          schema:
+            $ref: '#/definitions/Grupo'
+      responses:
+        200:
+          description: ok
+      security:
+        - api_key: []
+       
+          
+  '/grupo/{id}':
+    get:
+      tags: 
+        - grupo
+      summary: Recupera o grupo por id 
+      description: Retorna o grupo com a lista de jogadores
+      operationId: getGrupo
+      parameters: 
+        - in: path
+          name: id
+          type: integer
+          format: int64
+          description: Identificador do Grupo
+          required: true
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/GrupoComJogadores'
+      security:
+        - api_key: []
+    delete:
+      tags: 
+        - grupo
+      summary: Delete o grupo
+      description: Delete um grupo identificado por id
+      operationId: deleteGrupo
+      parameters: 
+        - in: path
+          name: id
+          type: integer
+          format: int64
+          description: Identificador do Grupo
+          required: true
+      responses:
+        200:
+          description: OK
+      security: 
+        - api_key: []
+    
+  '/grupo/addJogador':
+    post:
+      tags: 
+        - grupo
+      summary: Adiciona um jogador ao grupo
+      description: >-
+        O Jogador poderá existir no sistema ou ser criado neste momento. <br />  
+        Para vincular um jogador já existente será obrigatório informar o id do jogador. <br />
+        Para adicionar um jogador não cadastrado, basta informar o nome do jogador. O nome não poderá se repetir para este grupo. <br /> <br />
+        A identificação do grupo por id é <b>obrigatória em ambos os casos</b>.
+      operationId: addJogador
+      parameters: 
+        - in: body
+          name: body
+          description: Dados do jogador
+          required: true
+          schema:
+            $ref: '#/definitions/Jogador'
+      responses:
+        200:
+          description: OK
+      security: 
+        - api_key: []
+        
+  '/grupo/removeJogador':
+    delete:
+      tags: 
+        - grupo
+      summary: Retira um jogador do grupo
+      description: >-
+        O Jogador poderá existir no sistema ou ser um jogador sem cadastro existente apenas neste grupo. <br />  
+        Para remover um jogador já existente será obrigatório informar o id do jogador. <br />
+        Para remover um jogador não cadastrado, basta informar o nome do jogador. <br /> <br />
+        A identificação do grupo por id é <b>obrigatória em ambos os casos</b>.
+      operationId: removeJogador
+      parameters: 
+        - in: body
+          name: body
+          description: Dados do jogador
+          schema:
+            $ref: '#/definitions/Jogador'
+      responses:
+        200:
+          description: OK
+      security: 
+        - api_key: []
+    
+        
+securityDefinitions:
+  api_key:
+    type: apiKey
+    name: API Key
+    in: header
+    
+    
+definitions:
+  Grupo:
+    type: object
+    required:
+      - nome
+    properties:
+      id: 
+        type: integer
+        format: int64
+      nome:
+        type: string
+        example: Futebas Futebol Clube
+  Jogador:
+    type: object
+    required: 
+      - idGrupo
+    properties:
+      id:
+        type: integer
+        format: int64
+      idGrupo:
+        type: integer
+        format: int64
+      nome:
+        type: string
+        example: Rodrigo
+  GrupoComJogadores:
+    type: object
+    required: 
+      - nome
+    properties:
+      id:
+        type: integer
+        format: int64
+      nome:
+        type: string
+        example: Futebas Futebol Clube
+      jogadores:
+        type: array
+        items:
+          type: object
+          required: 
+            - nome
+          properties:
+            id: 
+              type: integer
+              format: int64
+            nome:
+              type: string
+              example: Rodrigo
+            
+            
