@@ -6,6 +6,8 @@ O backend foi construido com SpringBoot + Swagger. Assim tenho uma API Rest para
 
 O frontend foi contruido com VueJs e bootstrap. Desta maneira consigo ter um unico backend que dará suporte para Android + Web. 
 
+O planejamento e monitoramento das funcionalidades estão disponiveis na ferramenta [YourTrack](https://futebas.myjetbrains.com)
+
 ### Pré-requisitos
 
 #### MacOSX
