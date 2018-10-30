@@ -1,3 +1,5 @@
+[![Coverage Status](https://coveralls.io/repos/github/rodrigopizzi/futebas/badge.svg?branch=master)](https://coveralls.io/github/rodrigopizzi/futebas?branch=master)
+
 # Projeto :: Futebas
 
 Este projeto é responsavel por gerenciar partidas de futebol.
