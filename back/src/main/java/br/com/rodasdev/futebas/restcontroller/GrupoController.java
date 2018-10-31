@@ -15,13 +15,13 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 
-@RestController
-@Api(value="grupo", tags="grupo", description="grupo")
-@RequestMapping("grupo")
+//@RestController
+//@Api(value="grupo", tags="grupo", description="grupo")
+//@RequestMapping("grupo")
 public class GrupoController {
 
-	@PostMapping
-	@ApiOperation(value = "Cria um grupo de jogadores", notes = "Um usuário podera ter quantos grupos desejar.")
+//	@PostMapping
+//	@ApiOperation(value = "Cria um grupo de jogadores", notes = "Um usuário podera ter quantos grupos desejar.")
 	public ResponseEntity<Void> addGrupo(
 				@ApiParam(value = "O grupo deverá ter ao menos um nome" ,required = true)  
 				@Valid @RequestBody 
@@ -31,8 +31,8 @@ public class GrupoController {
 		return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
 	}
 	
-	@PutMapping
-	@ApiOperation(value = "Edita o nome do grupo", notes = "O nome do grupo deverá ter ao menos 3 caracteres")
+//	@PutMapping
+//	@ApiOperation(value = "Edita o nome do grupo", notes = "O nome do grupo deverá ter ao menos 3 caracteres")
 	public ResponseEntity<Void> updateGrupo(
 				@ApiParam(value = "O grupo deverá ser identificado por ‘id’", required = true)
 				@Valid @RequestBody

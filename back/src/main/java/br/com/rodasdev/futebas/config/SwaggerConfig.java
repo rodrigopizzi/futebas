@@ -17,6 +17,7 @@ import springfox.documentation.service.BasicAuth;
 import springfox.documentation.service.Contact;
 import springfox.documentation.service.ResponseMessage;
 import springfox.documentation.service.SecurityReference;
+import springfox.documentation.service.Tag;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spi.service.contexts.SecurityContext;
 import springfox.documentation.spring.web.plugins.Docket;
@@ -38,8 +39,10 @@ public class SwaggerConfig {
 				new ResponseMessageBuilder().code(200).message("OK").build());
 		
         return new Docket(DocumentationType.SWAGGER_2)
+        	.tags(new Tag("Grupo", ""))
 			.select()
-			.apis(RequestHandlerSelectors.basePackage("br.com.rodasdev.futebas.restcontroller"))              
+			.apis(RequestHandlerSelectors.basePackage("br.com.rodasdev.futebas"))
+//			.apis(RequestHandlerSelectors.any())
 			.paths(PathSelectors.any())
 			.build()
 			.globalResponseMessage(RequestMethod.POST, globalResponses)
