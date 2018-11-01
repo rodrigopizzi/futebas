@@ -1,4 +1,4 @@
-[![Coverage Status](https://coveralls.io/repos/github/rodrigopizzi/futebas/badge.svg?branch=master)](https://coveralls.io/github/rodrigopizzi/futebas?branch=master)
+<a href='https://coveralls.io/github/rodrigopizzi/futebas?branch=master'><img src='https://coveralls.io/repos/github/rodrigopizzi/futebas/badge.svg?branch=master' alt='Coverage Status' /></a>
 
 # Projeto :: Futebas
 
